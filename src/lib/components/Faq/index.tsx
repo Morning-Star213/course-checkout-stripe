@@ -65,7 +65,7 @@ export default function Faq() {
               <span className={`icon ${index === activeIndex ? "rotate" : ""}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  enable-background="new 0 0 64 64"
+                  enableBackground="new 0 0 64 64"
                   viewBox="0 0 64 64"
                   id="arrow"
                   width="30px"

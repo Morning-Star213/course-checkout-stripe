@@ -10,14 +10,15 @@ import Faq from "@/lib/components/Faq";
 
 export default function HomePage() {
   const headerTrailing = (
-    <div className="hidden md:block max-w-[20%] w-full">
-      <ul className="news-content flex justify-between font-semibold lg:gap-10">
+    <div className="hidden md:block w-full">
+      <ul className="news-content flex justify-between font-semibold gap-6 lg:gap-12">
         <li>
           <Link href="/home">Home</Link>
         </li>
-        <li>Team</li>
-        <li>Porfolio</li>
-        <li>Contact</li>
+        <li>INVEST</li>
+        <li>PORTFOLIO</li>
+        <li>TRADING COURSES</li>
+        <li>ABOUT</li>
       </ul>
     </div>
   );

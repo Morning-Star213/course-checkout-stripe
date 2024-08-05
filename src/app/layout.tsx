@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
+import ThemeProvider from "@/lib/providers/ThemeProvider";
+
 const inter = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -34,7 +36,9 @@ export default function RootLayout({
           draggable
           pauseOnHover
         />
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

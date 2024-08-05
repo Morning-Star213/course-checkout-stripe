@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { twMerge } from "tailwind-merge";
@@ -13,10 +14,12 @@ type CarouselType = {
   title: string;
   contents: string;
   bg_url: string;
+  asset_url?: string;
   related_news?: {
     title: string;
     contents: string;
   }[];
+  index?: number;
 };
 
 export const CarouselData = [
@@ -36,7 +39,8 @@ export const CarouselData = [
           "Experts comment on the potential impacts of these discoveries on the global medical landscape.",
       },
     ],
-    bg_url: "landing1.png",
+    bg_url: "/hero3.png",
+    asset_url: "/lines.svg",
   },
   {
     title: "Transform Your Financial Future",
@@ -54,7 +58,8 @@ export const CarouselData = [
           "How automakers are adopting sustainable practices to reduce environmental impact.",
       },
     ],
-    bg_url: "landing2.png",
+    bg_url: "/hero2.svg",
+    asset_url: "/chart.svg",
   },
   {
     title: "Join a Thriving Community of Crypto Enthusiasts",
@@ -72,7 +77,8 @@ export const CarouselData = [
           "Learn about the social initiatives supported by the celebrities and their positive impact on the community",
       },
     ],
-    bg_url: "landing3.png",
+    bg_url: "/hero.webp",
+    asset_url: "/candles.svg",
   },
 ];
 
@@ -81,57 +87,42 @@ export const CarouselPage: FC<CarouselType> = ({
   contents,
   related_news,
   bg_url,
+  asset_url,
+  index,
 }) => {
   return (
-    <div
-      className={twMerge(
-        "section-hero bg-cover bg-no-repeat",
-        bg_url == "landing1.png" && "bg-[url('/landing1.png')]",
-        bg_url == "landing2.png" && "bg-[url('/landing2.png')]",
-        bg_url == "landing3.png" && "bg-[url('/landing3.png')]"
-      )}
-    >
+    <div className={twMerge("section-hero bg-cover bg-no-repeat")}>
       <div className="section-hero flex justify-end">
         <div className="main-container">
-          <div className="h-full flex">
-            <div className="w-full flex items-end px-4 pb-6 md:pb-28">
-              <div>
+          <div className="h-full relative">
+            <div className="md:px-8 relative w-full h-full flex items-center px-4 pb-6 md:pb-12`">
+              <div className="z-10 max-w-[800px]">
                 <h1>{title}</h1>
-                <p className="sub-title">{contents}</p>
+                <p className="sub-title mt-6 sm:mt-10">{contents}</p>
               </div>
-            </div>
-            {related_news && (
-              <div className="sidebar-news hidden lg:block">
-                <div className="h-full flex items-end pb-10 border-l-[1px] border-[#CCCCCC]">
-                  <div className="w-full flex flex-col justify-end">
-                    <div>
-                      <h3 className="px-6 text-white">Related News</h3>
-                      <div className="pr-16">
-                        <div className="p-6 max-w-[350px]">
-                          <p className="text-[20px] font-bold text-white">
-                            {related_news && related_news[0]?.title}
-                          </p>
-                          <p className="mt-3 text-[16px] font-medium text-white">
-                            {related_news && related_news[0]?.contents}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="h-[1px] bg-border-gray"></div>
-                      <div className="pr-16">
-                        <div className="p-6 pb-0 max-w-[350px]">
-                          <p className="text-[20px] font-bold text-white">
-                            {related_news && related_news[1]?.title}
-                          </p>
-                          <p className="mt-3 text-[16px] font-medium text-white">
-                            {related_news && related_news[1]?.contents}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="z-0 absolute w-full flex justify-end md:px-20 px-4">
+                <div className="relative hidden md:flex justify-center w-[50%] h-[100%]">
+                  <Image
+                    className={`${index == 2 ? "max-h-[800px]" : "w-full"} `}
+                    src={bg_url}
+                    width={400}
+                    height={600}
+                    unoptimized
+                    alt="Trading"
+                  />
                 </div>
               </div>
-            )}
+              {asset_url && (
+                <Image
+                  className="-z-10 absolute w-[90%] sm:bottom-[200px] opacity-40"
+                  src={asset_url}
+                  width={500}
+                  height={800}
+                  unoptimized
+                  alt=""
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -152,7 +143,7 @@ export default function HeroSection() {
       spaceBetween={30}
       centeredSlides={true}
       autoplay={{
-        delay: 5000,
+        delay: 300000,
         disableOnInteraction: false,
       }}
       loop={true}
@@ -168,6 +159,8 @@ export default function HeroSection() {
               contents={carousel.contents}
               related_news={carousel.related_news}
               bg_url={carousel.bg_url}
+              asset_url={carousel.asset_url}
+              index={index}
             />
           </SwiperSlide>
         );

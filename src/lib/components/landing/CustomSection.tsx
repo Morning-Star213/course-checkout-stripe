@@ -56,26 +56,31 @@ export default function CustomSection() {
             <div className="w-4 h-6 bg-[#273A8C] rounded-r-full"></div>
             <h3>Tips and tutorials</h3>
           </div>
-          <div className="md:max-w-[85%] mx-auto flex flex-col gap-4">
+          <div className="md:max-w-[85%] mx-auto grid sm:grid-cols-2 gap-8">
             {recent_news.map((item, index) => {
               return (
-                <div key={item.title} className="flex gap-6">
+                <div
+                  key={item.title}
+                  className="gap-6 bg-white rounded-lg border dark:border-gray-800 dark:bg-[#18181B]"
+                >
                   <Image
-                    className="max-w-[40%] h-auto"
+                    className="w-full rounded-t-lg"
                     src={`/topics/recent${index + 1}.png`}
-                    width={300}
-                    height={200}
+                    width={500}
+                    height={300}
                     unoptimized
                     alt="Photo"
                   />
-                  <div>
-                    <p className="medium-content mt-1 lg:mt-4">{item.title}</p>
-                    <p className="hidden md:block news-content mt-2">
+                  <div className="px-3 pt-4 sm:min-h-[100px]">
+                    <p className="medium-content">{item.title}</p>
+                    <p className="pl-1 hidden md:block news-content mt-2">
                       {item.content}
                     </p>
-                    <div className="md:mt-4">
-                      <Tag topic={item.tag} />
-                    </div>
+                  </div>
+                  <div className="px-3 py-4 flex justify-end">
+                    <button className="border rounded-full py-1 px-2">
+                      See More
+                    </button>
                   </div>
                 </div>
               );

@@ -14,12 +14,12 @@ type CarouselType = {
   title: string;
   contents: string;
   bg_url: string;
-  asset_url: string;
+  asset_url?: string;
   related_news?: {
     title: string;
     contents: string;
   }[];
-  index: number;
+  index?: number;
 };
 
 export const CarouselData = [
@@ -112,14 +112,16 @@ export const CarouselPage: FC<CarouselType> = ({
                   />
                 </div>
               </div>
-              <Image
-                className="-z-10 absolute w-[90%] sm:bottom-[200px] opacity-40"
-                src={asset_url}
-                width={500}
-                height={800}
-                unoptimized
-                alt=""
-              />
+              {asset_url && (
+                <Image
+                  className="-z-10 absolute w-[90%] sm:bottom-[200px] opacity-40"
+                  src={asset_url}
+                  width={500}
+                  height={800}
+                  unoptimized
+                  alt=""
+                />
+              )}
             </div>
           </div>
         </div>

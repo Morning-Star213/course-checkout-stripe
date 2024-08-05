@@ -22,7 +22,7 @@ export default function Footer() {
     );
   }, [onLogo]);
   return (
-    <footer className="bg-[#273A8C]">
+    <footer className="bg-[#d4d3d1] text-[#1b263b] w-full z-20 md:px-12 px-4 py-4 dark:text-default-color dark:bg-[#1b263b]">
       <div className="main-container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center py-6">
           {logoElement}

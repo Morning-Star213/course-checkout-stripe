@@ -48,8 +48,8 @@ export default function Faq() {
   }, [activeIndex]);
 
   return (
-    <section className="max-w-[1440px] mx-auto py-16 px-4">
-      <h2 className="mb-6">FAQ</h2>
+    <section className="main-container">
+      <h2 className="z-10 mb-6">FAQ</h2>
       <div className="accordion-group w-full">
         {items.map((item, index) => (
           <div

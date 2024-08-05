@@ -4,7 +4,11 @@
 }
 
 .accordion-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #7b898f;
+}
+
+.dark .accordion-item {
+  border-bottom: 1px solid #7b898f;
 }
 
 .accordion-item:last-child {
@@ -14,8 +18,7 @@
 .accordion-header {
   width: 100%;
   cursor: pointer;
-  background-color: #f7f7f7;
-  padding: 15px 20px;
+  padding: 20px 20px;
   border: none;
   text-align: left;
   outline: none;
@@ -27,7 +30,11 @@
 }
 
 .accordion-header:hover {
-  background-color: #e0e0e0;
+  background-color: #777b8399;
+}
+
+.dark .accordion-header:hover {
+  background-color: #32394799;
 }
 
 .icon {
@@ -40,11 +47,12 @@
 
 .accordion-content {
   max-height: 0;
+  padding-left: 10px;
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
 
 .accordion-content-inner {
-  padding: 15px 20px;
+  padding: 0px 20px 30px;
   border-top: 1px solid #ddd;
 }

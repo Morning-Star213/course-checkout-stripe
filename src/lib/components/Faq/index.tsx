@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { Icon } from "@iconify/react";
 
 import "./style.css";
 
@@ -47,35 +48,23 @@ export default function Faq() {
   }, [activeIndex]);
 
   return (
-    <section className="max-w-[1440px] mx-auto py-24 px-4">
+    <section className="max-w-[1440px] mx-auto py-16 px-4">
       <h2 className="mb-6">FAQ</h2>
       <div className="accordion-group w-full">
         {items.map((item, index) => (
           <div
             key={index}
             className={`accordion-item ${
-              index === activeIndex ? "active" : ""
+              index === activeIndex ? "active border-none" : ""
             }`}
           >
             <button
-              className="accordion-header"
+              className="accordion-header "
               onClick={() => onTitleClick(index)}
             >
               {item.title}
               <span className={`icon ${index === activeIndex ? "rotate" : ""}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  enableBackground="new 0 0 64 64"
-                  viewBox="0 0 64 64"
-                  id="arrow"
-                  width="30px"
-                  height="30px"
-                >
-                  <path
-                    d="m-218.7-308.6 2-2 11.7 11.8 11.7-11.8 2 2-13.7 13.7-13.7-13.7"
-                    transform="translate(237 335)"
-                  ></path>
-                </svg>
+                <Icon icon="ri:arrow-down-s-line" width="24" height="24" />
               </span>
             </button>
             <div
@@ -90,7 +79,13 @@ export default function Faq() {
                     : "0",
               }}
             >
-              <div className="accordion-content-inner">{item.content}</div>
+              <div
+                className={`accordion-content-inner ${
+                  index === activeIndex ? "!border-none" : ""
+                }`}
+              >
+                {item.content}
+              </div>
             </div>
           </div>
         ))}

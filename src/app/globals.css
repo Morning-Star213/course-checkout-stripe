@@ -2,19 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --color-border-gray: #CCCCCC;
+body {
+  @apply text-default-color; /* Apply the custom gray defined in tailwind.config.js */
+  @apply text-secondary-color;
+  color: #1b263b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Dark Mode Styles */
+.dark body {
+  color: #e0e1dd;
 }
 
 .swiper-wrapper{
@@ -25,7 +21,6 @@
 h1 {
   font-size: 48px;
   font-weight: 700;
-  color: white;
 }
 
 h2 {
@@ -104,7 +99,6 @@ li:hover {
   .sub-title {
     font-size: 24px;
     font-weight: 500;
-    color: white;
   }
   .news-title {
     font-size: 16px;
@@ -229,5 +223,9 @@ li:hover {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  input:checked~.dot {
+    transform: translateX(30px);
+    /* background-color: #132b50; */
   }
 }

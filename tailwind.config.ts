@@ -16,9 +16,12 @@ const config: Config = {
       },
       colors: {
         "border-gray": "var(--color-border-gray)",
+        "default-color": "#e0e1dd",
+        "secondary-color": "#0d1b2a",
       },
     },
   },
   plugins: [],
+  darkMode: "class",
 };
 export default config;

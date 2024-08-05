@@ -38,10 +38,10 @@ export default function ContactUs() {
 
   return (
     <div className="my-6">
-      <div className="grid sm:grid-cols-2 items-center gap-16 p-8 mx-auto max-w-[1440px] bg-white rounded-md text-[#333]">
+      <div className="grid sm:grid-cols-2 items-center gap-16 p-8 mx-auto max-w-[1440px] rounded-md">
         <div>
           <h2 className="mb-6">Contact Us</h2>
-          <p className="text-sm text-gray-400 mt-3">
+          <p className="text-sm mt-3">
             Have some big idea or brand to develop and need help? Then reach out
             we&apos;d love to hear about your project and provide help.
           </p>
@@ -66,7 +66,7 @@ export default function ContactUs() {
                 <a
                   target="blank"
                   href="mailto:contactus@gmail.com"
-                  className="text-gray-400 text-sm ml-3"
+                  className="text-gray-600 text-sm ml-3"
                 >
                   <small className="block">Mail</small>
                   <strong>contactus@gmail.com</strong>
@@ -94,7 +94,7 @@ export default function ContactUs() {
                 <a
                   target="blank"
                   href="tel:2348101234567"
-                  className="text-gray-400 text-sm ml-3"
+                  className="text-gray-600 text-sm ml-3"
                 >
                   <small className="block">Phone</small>
                   <strong>+1348101234</strong>
@@ -159,33 +159,33 @@ export default function ContactUs() {
             type="text"
             value={name}
             placeholder="Name"
-            className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]"
+            className="w-full bg-transparent/5 rounded-md py-2.5 px-4 border text-sm outline-[#b0b3a1]"
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="email"
             value={email}
             placeholder="Email"
-            className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]"
+            className="w-full bg-transparent/5 rounded-md py-2.5 px-4 border text-sm outline-[#b0b3a1]"
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             value={subject}
             type="text"
             placeholder="Subject"
-            className="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]"
+            className="w-full bg-transparent/5 rounded-md py-2.5 px-4 border text-sm outline-[#b0b3a1]"
             onChange={(e) => setSubject(e.target.value)}
           />
           <textarea
             value={message}
             placeholder="Message"
             rows={6}
-            className="w-full rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"
+            className="w-full bg-transparent/5 rounded-md px-4 border text-sm pt-2.5 outline-[#b0b3a1]"
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
           <button
             type="button"
-            className="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full disabled:bg-blue-300"
+            className="text-default-color dark:text-[#1b263b] bg-[#1b263b] dark:bg-default-color hover:bg-[#1b263b99] dark:hover:bg-default-color/90 font-semibold rounded-md text-sm px-4 py-2.5 w-full disabled:bg-blue-300"
             disabled={isSubmitting}
             onClick={sendEmail}
           >

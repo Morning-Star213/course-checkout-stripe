@@ -23,7 +23,7 @@ export default function HomePage() {
     </div>
   );
   return (
-    <div className="">
+    <div className="bg-[#e0e1dd] dark:bg-[#0d1b2a] ">
       <Header hasSearch headerTrailing={headerTrailing} />
       <div>
         <HeroSection />

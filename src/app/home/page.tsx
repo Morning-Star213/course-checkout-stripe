@@ -28,8 +28,11 @@ export default function HomePage() {
       <div>
         <HeroSection />
         <CustomSection />
-        <Faq />
-        <ContactUs />
+        <div className="relative pt-20">
+          <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <Faq />
+          <ContactUs />
+        </div>
       </div>
       <Footer />
     </div>

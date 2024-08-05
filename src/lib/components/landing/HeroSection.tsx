@@ -58,7 +58,7 @@ export const CarouselData = [
           "How automakers are adopting sustainable practices to reduce environmental impact.",
       },
     ],
-    bg_url: "/hero2.svg",
+    bg_url: "/hero2.png",
     asset_url: "/chart.svg",
   },
   {
@@ -91,37 +91,41 @@ export const CarouselPage: FC<CarouselType> = ({
   index,
 }) => {
   return (
-    <div className={twMerge("section-hero bg-cover bg-no-repeat")}>
-      <div className="section-hero flex justify-end">
-        <div className="main-container">
-          <div className="h-full relative">
-            <div className="md:px-8 relative w-full h-full flex items-center px-4 pb-6 md:pb-12`">
-              <div className="z-10 max-w-[800px]">
-                <h1>{title}</h1>
-                <p className="sub-title mt-6 sm:mt-10">{contents}</p>
-              </div>
-              <div className="z-0 absolute w-full flex justify-end md:px-20 px-4">
-                <div className="relative hidden md:flex justify-center w-[50%] h-[100%]">
-                  <Image
-                    className={`${index == 2 ? "max-h-[800px]" : "w-full"} `}
-                    src={bg_url}
-                    width={400}
-                    height={600}
-                    unoptimized
-                    alt="Trading"
-                  />
+    <div className={twMerge("section-hero h-full bg-cover bg-no-repeat")}>
+      <div className="w-full h-full dark:bg-grid-white/[0.1] bg-grid-black/[0.2] relative flex items-center justify-center">
+        {/* Radial gradient for the container to give a faded look */}
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <div className="section-hero flex justify-center">
+          <div className="main-container">
+            <div className="h-full relative">
+              <div className="md:px-8 relative w-full h-full flex items-center px-4 pb-6 md:pb-12`">
+                <div className="z-10 max-w-[700px]">
+                  <h1>{title}</h1>
+                  <p className="sub-title mt-6 sm:mt-10">{contents}</p>
                 </div>
+                <div className="z-0 absolute w-full flex justify-end md:px-20 px-4">
+                  <div className="relative hidden md:flex justify-center w-[50%] h-[100%]">
+                    <Image
+                      className={`${index == 2 ? "max-h-[800px]" : "w-full"} `}
+                      src={bg_url}
+                      width={400}
+                      height={600}
+                      unoptimized
+                      alt="Trading"
+                    />
+                  </div>
+                </div>
+                {asset_url && (
+                  <Image
+                    className="-z-10 absolute w-[90%] sm:bottom-[200px] opacity-40"
+                    src={asset_url}
+                    width={500}
+                    height={800}
+                    unoptimized
+                    alt=""
+                  />
+                )}
               </div>
-              {asset_url && (
-                <Image
-                  className="-z-10 absolute w-[90%] sm:bottom-[200px] opacity-40"
-                  src={asset_url}
-                  width={500}
-                  height={800}
-                  unoptimized
-                  alt=""
-                />
-              )}
             </div>
           </div>
         </div>
@@ -149,7 +153,7 @@ export default function HeroSection() {
       loop={true}
       pagination={pagination}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper h-[100vh]"
     >
       {CarouselData.map((carousel, index) => {
         return (

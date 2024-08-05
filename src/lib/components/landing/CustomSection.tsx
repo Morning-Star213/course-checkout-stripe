@@ -49,8 +49,9 @@ export default function CustomSection() {
   };
 
   return (
-    <section className="flex justify-end mb-10">
-      <div className="main-container px-4">
+    <section className="relative flex justify-center">
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="z-10 main-container px-4">
         <div className="mt-8">
           <div className="flex items-center gap-2 py-6">
             <div className="w-4 h-6 bg-[#273A8C] rounded-r-full"></div>

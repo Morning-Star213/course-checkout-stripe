@@ -19,7 +19,7 @@ body {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 700;
 }
 
@@ -95,6 +95,7 @@ li:hover {
   .main-container {
     width: 100%;
     max-width: calc(1800px - 30px);
+    margin: 0 auto;
   }
   .sub-title {
     font-size: 24px;
@@ -175,6 +176,7 @@ li:hover {
 
 @layer components {
   .section-hero {
+    width: 100%;
     min-height: calc(100vh - 100px);
   }
 

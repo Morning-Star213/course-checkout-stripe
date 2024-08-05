@@ -37,8 +37,8 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="my-6">
-      <div className="grid sm:grid-cols-2 items-center gap-16 p-8 mx-auto max-w-[1440px] rounded-md">
+    <div className="main-container py-16">
+      <div className="grid sm:grid-cols-2 items-center gap-16">
         <div>
           <h2 className="mb-6">Contact Us</h2>
           <p className="text-sm mt-3">

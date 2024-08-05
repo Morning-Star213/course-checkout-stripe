@@ -48,7 +48,7 @@ export default function Header({
 
   return (
     <>
-      <header className="bg-[#d4d3d1] text-[#1b263b] w-full relative md:px-12 px-4 py-4 dark:text-default-color dark:bg-[#1b263b]">
+      <header className="bg-[#d4d3d1] text-[#1b263b] w-full fixed z-20 md:px-12 px-4 py-4 dark:text-default-color dark:bg-[#1b263b]">
         <div className="flex items-center justify-between">
           {logoElement}
           <div className="flex items-center">

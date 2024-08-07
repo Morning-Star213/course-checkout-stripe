@@ -37,7 +37,7 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="main-container py-16">
+    <div className="main-container py-16 px-4">
       <div className="grid sm:grid-cols-2 items-center gap-16">
         <div>
           <h2 className="mb-6">Contact Us</h2>

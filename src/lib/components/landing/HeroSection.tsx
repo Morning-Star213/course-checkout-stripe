@@ -24,9 +24,10 @@ type CarouselType = {
 
 export const CarouselData = [
   {
-    title: "Master Cryptocurrency with Expert Guidance",
+    title:
+      "First U.S. institutional asset manager focused exclusively on blockchain technology.",
     contents:
-      "Join our interactive courses designed for beginners and advanced learners alike. Unlock the secrets of blockchain, trading, and investment strategies.",
+      "Since 2013, Pantera has invested in digital assets and blockchain companies, providing investors with the full spectrum of exposure to the space.",
     related_news: [
       {
         title: "Advancements in Gene Therapy",
@@ -143,32 +144,22 @@ export default function HeroSection() {
   };
 
   return (
-    <Swiper
-      spaceBetween={30}
-      centeredSlides={true}
-      autoplay={{
-        delay: 300000,
-        disableOnInteraction: false,
-      }}
-      loop={true}
-      pagination={pagination}
-      modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper h-[100vh]"
-    >
-      {CarouselData.map((carousel, index) => {
-        return (
-          <SwiperSlide key={index}>
-            <CarouselPage
-              title={carousel.title}
-              contents={carousel.contents}
-              related_news={carousel.related_news}
-              bg_url={carousel.bg_url}
-              asset_url={carousel.asset_url}
-              index={index}
-            />
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+    <div className="section-hero flex items-center justify-center">
+      {/* Radial gradient for the container to give a faded look */}
+
+      <div className="grid-container flex justify-center">
+        <div className="relative w-full h-full flex items-center">
+          <div>
+            <h1>{CarouselData[0].title}</h1>
+            <p
+              className="sub-title mt-6 sm:mt-10 max-w-[800px]"
+              style={{ fontFamily: "NeoGramCondensed" }}
+            >
+              {CarouselData[0].contents}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -144,10 +144,8 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="section-hero flex items-center justify-center">
-      {/* Radial gradient for the container to give a faded look */}
-
-      <div className="grid-container flex justify-center">
+    <div className="outpadding section-hero grid1 flex mx-auto items-center justify-center">
+      <div className=" flex justify-center">
         <div className="relative w-full h-full flex items-center">
           <div>
             <h1>{CarouselData[0].title}</h1>

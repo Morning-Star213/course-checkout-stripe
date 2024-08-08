@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 
 import { useTheme } from "@/lib/providers/ThemeProvider";
+import Link from "next/link";
 
 export default function Header({
   headerTrailing,
@@ -166,8 +167,12 @@ export default function Header({
             </svg>
           </button>
           <ul className="mb-20 font-semibold text-xl flex flex-col gap-6">
-            <li>INVEST</li>
-            <li>PORTFOLIO</li>
+            <li>
+              <Link href="/invest"> INVEST</Link>
+            </li>
+            <li>
+              <Link href="/portfolio"> PORTFOLIO</Link>
+            </li>
             <li>TRAINING COURSES</li>
             <li>ABOUT</li>
             <li>LOGIN</li>

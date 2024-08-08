@@ -10,6 +10,7 @@ import Faq from "@/lib/components/Faq";
 import InvestmentTypeSection from "@/lib/components/landing/InvestmentTypeSection";
 import { FloatingNav } from "@/lib/components/layout/FloatingHeader";
 import SmoothScroll from "@/lib/components/scroll";
+import ScrollButton from "@/lib/components/scrollButton/page";
 
 export default function HomePage() {
   const headerTrailing = (
@@ -27,7 +28,7 @@ export default function HomePage() {
   );
   return (
     <div>
-      <FloatingNav />
+      {/* <FloatingNav /> */}
       <div className="fixed top-0 z-0 w-[100vw] h-[100vh]">
         <video
           className="background-video hide-for-xxlarge w-[100%]"
@@ -43,12 +44,7 @@ export default function HomePage() {
       <SmoothScroll>
         <div>
           <HeroSection />
-          <CustomSection />
-          <div className="relative pt-20">
-            <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-            <Faq />
-            <ContactUs />
-          </div>
+          <ScrollButton />
           <InvestmentTypeSection />
         </div>
         <Footer />

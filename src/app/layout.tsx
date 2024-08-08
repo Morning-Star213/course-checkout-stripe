@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import localFont from "@next/font/local";
 
 import ThemeProvider from "@/lib/providers/ThemeProvider";
+import { FloatingNav } from "@/lib/components/layout/FloatingHeader";
+import Footer from "@/lib/components/layout/Footer";
 
 const inter = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -48,6 +50,7 @@ export default function RootLayout({
           draggable
           pauseOnHover
         />
+        <FloatingNav />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -69,12 +69,14 @@ export const MenuItem = ({
   setActive,
   active,
   item,
+  link,
   children,
   index,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
+  link: string;
   index: number;
   children?: React.ReactNode;
 }) => {
@@ -88,7 +90,7 @@ export const MenuItem = ({
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
       >
-        {item}
+        <Link href={link}>{item}</Link>
       </motion.p>
       {active !== null && (
         <motion.div
@@ -240,7 +242,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
         )}
       >
         <div className="grid-container w-full">
-          <div className="grid-x flex mx-auto justify-between items-center">
+          <div className="out grid-x flex mx-auto justify-between items-center">
             {logoElement}
             <Menu setActive={setActive}>
               {navItems.map((navItem: any, idx: number) => (
@@ -248,14 +250,15 @@ export const FloatingNav = ({ className }: { className?: string }) => {
                   key={idx}
                   setActive={setActive}
                   active={active}
+                  link={navItem.link}
                   item={navItem.name}
                   index={idx}
                 >
                   <div className="flex flex-col space-y-4 text-sm">
                     {navItem.items.map((subItem: any) => (
-                      <HoveredLink key={subItem} href={subItem.link}>
+                      <a key={subItem} href={subItem.link}>
                         {subItem.name}
-                      </HoveredLink>
+                      </a>
                     ))}
                   </div>
                 </MenuItem>

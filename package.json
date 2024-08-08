@@ -10,7 +10,12 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/ibm-plex-mono": "^5.0.13",
     "@iconify/react": "^5.0.2",
+    "@mui/material": "^5.16.6",
+    "@next/font": "^14.2.5",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
     "mini-svg-data-uri": "^1.4.4",

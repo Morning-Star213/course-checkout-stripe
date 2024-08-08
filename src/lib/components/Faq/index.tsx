@@ -48,7 +48,7 @@ export default function Faq() {
   }, [activeIndex]);
 
   return (
-    <section className="main-container">
+    <section className="main-container px-4">
       <h2 className="z-10 mb-6">FAQ</h2>
       <div className="accordion-group w-full">
         {items.map((item, index) => (

@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const svgToDataUri = require("mini-svg-data-uri");
- 
+
 const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
@@ -25,6 +25,9 @@ const config: Config = {
         "border-gray": "var(--color-border-gray)",
         "default-color": "#e0e1dd",
         "secondary-color": "#0d1b2a",
+      },
+      fontFamily: {
+        sans: ["var(--font-poppins)"],
       },
     },
   },

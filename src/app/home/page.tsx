@@ -7,6 +7,10 @@ import RelevantSection from "@/lib/components/landing/RelevantSection";
 import CustomSection from "@/lib/components/landing/CustomSection";
 import ContactUs from "@/lib/components/contactus/indext";
 import Faq from "@/lib/components/Faq";
+import InvestmentTypeSection from "@/lib/components/landing/InvestmentTypeSection";
+import { FloatingNav } from "@/lib/components/layout/FloatingHeader";
+import SmoothScroll from "@/lib/components/scroll";
+import ScrollButton from "@/lib/components/scrollButton/page";
 
 export default function HomePage() {
   const headerTrailing = (
@@ -23,18 +27,28 @@ export default function HomePage() {
     </div>
   );
   return (
-    <div className="bg-[#e0e1dd] dark:bg-[#0d1b2a] ">
-      <Header hasSearch headerTrailing={headerTrailing} />
-      <div>
-        <HeroSection />
-        <CustomSection />
-        <div className="relative pt-20">
-          <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-          <Faq />
-          <ContactUs />
-        </div>
+    <div>
+      {/* <FloatingNav /> */}
+      <div className="fixed top-0 z-0 w-[100vw] h-[100vh]">
+        <video
+          className="background-video hide-for-xxlarge w-[100%]"
+          poster="/poster.webp"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/background.mp4" type="video/mp4" />
+        </video>
       </div>
-      <Footer />
+      <SmoothScroll>
+        <div>
+          <HeroSection />
+          <ScrollButton />
+          <InvestmentTypeSection />
+        </div>
+        <Footer />
+      </SmoothScroll>
     </div>
   );
 }

@@ -51,6 +51,15 @@ export default function RootLayout({
           pauseOnHover
         />
         <FloatingNav />
+        <video
+          className="background-video show-for-xxlarge fixed top-0 z-0 w-[100vw] h-[100vh]"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/background.mp4" type="video/mp4" />
+        </video>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

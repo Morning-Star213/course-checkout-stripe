@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
@@ -39,24 +39,6 @@ const navItems = [
   {
     name: "ABOUT",
     link: "/about",
-    items: [
-      {
-        name: "The Firm",
-        link: "firm",
-      },
-      {
-        name: "The Team",
-        link: "team",
-      },
-      {
-        name: "Careers",
-        link: "career",
-      },
-      {
-        name: "Contact Us",
-        link: "contact",
-      },
-    ],
   },
   {
     name: "LOGIN",
@@ -82,7 +64,6 @@ export const MenuItem = ({
 }) => {
   return (
     <div
-      onMouseEnter={() => setActive(item)}
       className="relative font-medium"
       style={{ fontFamily: "IBM Plex Mono" }}
     >
@@ -98,7 +79,7 @@ export const MenuItem = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={transition}
         >
-          {active === item && navItems[index].items.length > 0 && (
+          {active === item && navItems[index] && (
             <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
               <motion.div
                 transition={transition}
@@ -130,7 +111,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="min-w-[50%] relative shadow-input flex justify-between space-x-8"
+      className="hidden sm:flex min-w-[50%] relative shadow-input justify-between space-x-8"
     >
       {children}
     </nav>
@@ -162,17 +143,6 @@ export const ProductItem = ({
   );
 };
 
-export const HoveredLink = ({ children, ...rest }: any) => {
-  return (
-    <Link
-      {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
-    >
-      {children}
-    </Link>
-  );
-};
-
 export const FloatingNav = ({ className }: { className?: string }) => {
   const { scrollYProgress } = useScroll();
 
@@ -181,6 +151,19 @@ export const FloatingNav = ({ className }: { className?: string }) => {
   const [visible, setVisible] = useState(true);
   const [active, setActive] = useState<string | null>(null);
   const [isUp, setIsUp] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    if (isExpanded) {
+      document.body.style.overflow = "hidden"; // Disable scroll
+    } else {
+      document.body.style.overflow = "auto"; // Enable scroll
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup on unmount
+    };
+  }, [isExpanded]);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -208,15 +191,17 @@ export const FloatingNav = ({ className }: { className?: string }) => {
 
   const logoElement = useMemo(() => {
     return (
-      <Image
-        className="hover:cursor-pointer -ml-[3.5em]"
-        src={"/logo.webp"}
-        width={365}
-        height={125}
-        onClick={onLogo}
-        alt="LOGO"
-        priority
-      />
+      <div className="flex">
+        <Image
+          className="hover:cursor-pointer -ml-[30px]"
+          src={"/logo.webp"}
+          width={365}
+          height={125}
+          onClick={onLogo}
+          alt="LOGO"
+          priority
+        />
+      </div>
     );
   }, [onLogo]);
 
@@ -242,8 +227,59 @@ export const FloatingNav = ({ className }: { className?: string }) => {
         )}
       >
         <div className="grid-container w-full">
-          <div className="out grid-x flex mx-auto justify-between items-center">
+          <div className="outpadding  grid-x flex mx-auto justify-between items-center">
             {logoElement}
+            {
+              <button
+                className="md:hidden"
+                onClick={() => setExpanded(!isExpanded)}
+              >
+                {/* Login */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  id="menu"
+                  width={30}
+                  height={30}
+                >
+                  <g>
+                    <g>
+                      <rect
+                        width="24"
+                        height="24"
+                        opacity="0"
+                        transform="rotate(180 12 12)"
+                      ></rect>
+                      <circle cx="4" cy="12" r="1"></circle>
+                      <rect
+                        width="14"
+                        height="2"
+                        x="7"
+                        y="11"
+                        rx=".94"
+                        ry=".94"
+                      ></rect>
+                      <rect
+                        width="18"
+                        height="2"
+                        x="3"
+                        y="16"
+                        rx=".94"
+                        ry=".94"
+                      ></rect>
+                      <rect
+                        width="18"
+                        height="2"
+                        x="3"
+                        y="6"
+                        rx=".94"
+                        ry=".94"
+                      ></rect>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+            }
             <Menu setActive={setActive}>
               {navItems.map((navItem: any, idx: number) => (
                 <MenuItem
@@ -253,17 +289,55 @@ export const FloatingNav = ({ className }: { className?: string }) => {
                   link={navItem.link}
                   item={navItem.name}
                   index={idx}
-                >
-                  <div className="flex flex-col space-y-4 text-sm">
-                    {navItem.items.map((subItem: any) => (
-                      <a key={subItem} href={subItem.link}>
-                        {subItem.name}
-                      </a>
-                    ))}
-                  </div>
-                </MenuItem>
+                ></MenuItem>
               ))}
             </Menu>
+            <div
+              className={`${
+                isExpanded ? "translate-y-0" : "-translate-y-[100vh]"
+              } z-40 fixed left-0 top-0 w-[100vw] h-[100vh] flex justify-center items-center bg-[#15182B] transition-all duration-300`}
+            >
+              <button
+                className="absolute top-4 right-4"
+                onClick={() => setExpanded(false)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  id="close"
+                  width="60px"
+                  height="60px"
+                  fill="white"
+                >
+                  <g>
+                    <g>
+                      <rect opacity="0" transform="rotate(180 12 12)"></rect>
+                      <path d="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+              <ul
+                className="translate-y-[50px] font-medium text-xl flex flex-col items-center gap-6 text-white"
+                style={{ fontFamily: "IBM Plex Mono" }}
+              >
+                <li onClick={() => setExpanded(false)}>
+                  <Link href="/invest">INVEST</Link>
+                </li>
+                <li onClick={() => setExpanded(false)}>
+                  <Link href="/portfolio">PORTFOLIO</Link>
+                </li>
+                <li onClick={() => setExpanded(false)}>
+                  <Link href="/course">TRAINING COURSES</Link>
+                </li>
+                <li onClick={() => setExpanded(false)}>
+                  <Link href="/about">ABOUT</Link>
+                </li>
+                <li onClick={() => setExpanded(false)}>
+                  <Link href="/login">LOGIN</Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </motion.div>

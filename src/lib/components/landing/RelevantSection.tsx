@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { twMerge } from "tailwind-merge";
 
-import NewsCard from "@/lib/components/cards/NewsCard";
-import TopReadCard from "@/lib/components/cards/TopReadCard";
 
 import "swiper/css";
 import "swiper/css/pagination";

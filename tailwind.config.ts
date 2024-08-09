@@ -31,6 +31,18 @@ const config: Config = {
       },
     },
   },
+  corePlugins: {
+    // Enable filter utilities
+    filter: true,
+    grayscale: true,
+    invert: true,
+  },
+  // Don't forget to add the required variants if needed.
+  variants: {
+    extend: {
+      filter: ['focus'],
+    },
+  },
   plugins: [
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {

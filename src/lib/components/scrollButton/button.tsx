@@ -11,7 +11,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className=" grid2 btn3 hover:bg-orange-400 hover:cursor-pointer"
+      className="btn hover:cursor-pointer"
       style={{
         translate: `0px ${top * speed}px`,
       }}

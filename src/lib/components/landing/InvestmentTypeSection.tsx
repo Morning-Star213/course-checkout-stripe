@@ -13,16 +13,19 @@ export default function InvestmentTypeSection() {
             <Link href={"dd"}>VIEW THE FUNDS</Link>
           </button>
         </div>
-        <div className="flex flex-col sm:flex-row outpadding justify-between">
+        <div className="flex flex-col md:flex-row outpadding justify-between">
           <div className="px-2">
-            <div className=" sm:h-[200px] sm:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
+            <div className=" md:h-[200px] md:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
               <div className="">
                 <h5>Venture Equity</h5>
               </div>
               <div className="mt-[30px]">
                 <p
                   className="text-[15px] font-medium"
-                  style={{ fontFamily: "NeoGramCondensed" }}
+                  style={{
+                    fontFamily: "NeoGramCondensed",
+                    letterSpacing: "0.05rem",
+                  }}
                 >
                   Exposure to equity in companies building products and services
                   in the nascent blockchain ecosystem. Our long standing
@@ -34,14 +37,17 @@ export default function InvestmentTypeSection() {
             </div>
           </div>
           <div className="px-2">
-            <div className=" sm:h-[200px] sm:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
+            <div className=" md:h-[200px] md:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
               <div>
                 <h5>Early-Stage Tokens</h5>
               </div>
               <div className="mt-[30px]">
                 <p
                   className="text-[15px] font-medium"
-                  style={{ fontFamily: "NeoGramCondensed" }}
+                  style={{
+                    fontFamily: "NeoGramCondensed",
+                    letterSpacing: "0.05rem",
+                  }}
                 >
                   Exposure to new, efficient, and scalable protocols. Similar to
                   venture capital equity, but investing in tokens (not
@@ -52,14 +58,17 @@ export default function InvestmentTypeSection() {
             </div>
           </div>
           <div className="px-2">
-            <div className=" sm:h-[200px] sm:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
+            <div className=" md:h-[200px] md:w-[350px] border-t border-b border-black pt-[25px] pb-[35px]">
               <div>
                 <h5>Liquid Tokens</h5>
               </div>
               <div className="mt-[30px]">
                 <p
                   className="text-[15px] font-medium"
-                  style={{ fontFamily: "NeoGramCondensed" }}
+                  style={{
+                    fontFamily: "NeoGramCondensed",
+                    letterSpacing: "0.05rem",
+                  }}
                 >
                   Exposure to the largest and most liquid digital assets. We use
                   our deep market and technical expertise to trade tokens while

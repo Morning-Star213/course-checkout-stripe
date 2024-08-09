@@ -33,7 +33,7 @@ export default function Header({
     return (
       <Image
         className="hover:cursor-pointer"
-        src={"/logo.webp"}
+        src={"/logo.png"}
         width={170}
         height={80}
         onClick={onLogo}

@@ -43,8 +43,8 @@ const About = () => {
           >
             <p className="text-center">
               Capital Invest 360 was founded by former Tiger Management Head of
-              Macro Trading and CFO Dan Morehead. Capital Invest 360's global
-              macro strategy invested over $1 billion of institutional
+              Macro Trading and CFO Dan Morehead. Capital Invest 360&apos;s
+              global macro strategy invested over $1 billion of institutional
               allocations. In 2013, Capital Invest 360 created the first
               blockchain hedge and venture funds in the United States.
             </p>

@@ -194,7 +194,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
       <div className="flex">
         <Image
           className="hover:cursor-pointer -ml-[30px]"
-          src={"/logo.webp"}
+          src={"/logo.png"}
           width={365}
           height={125}
           onClick={onLogo}

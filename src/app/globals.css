@@ -20,12 +20,6 @@
 body {
   @apply text-default-color; /* Apply the custom gray defined in tailwind.config.js */
   @apply text-secondary-color;
-  color: #1b263b;
-}
-
-/* Dark Mode Styles */
-.dark body {
-  color: #e0e1dd;
 }
 
 .swiper-wrapper{

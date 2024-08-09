@@ -19,7 +19,12 @@ const Login = () => {
           }}
         >
           <div className=" flex justify-center items-center pb-9">
-            <Image src={"/logo.png"} width={250} height={40} alt="LOGIN" />
+            <Image
+              src={"/logo_footer.png"}
+              width={250}
+              height={40}
+              alt="LOGIN"
+            />
           </div>
           <div className="text-[16px]">
             Please enter your email and password to proceed

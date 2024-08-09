@@ -17,7 +17,7 @@ export default function Footer() {
   const logoElement = useMemo(() => {
     return (
       <Image
-        src={"/logo.png"}
+        src={"/logo_footer.png"}
         width={170}
         height={40}
         onClick={onLogo}

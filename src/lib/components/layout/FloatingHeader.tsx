@@ -10,6 +10,9 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useAtom } from "jotai";
+import { loginstatusAtom } from "@/lib/store";
+import Dropdown from "./dropdown";
 
 const transition = {
   type: "spring",
@@ -43,7 +46,7 @@ const navItems = [
   {
     name: "LOGIN",
     link: "/login",
-    items: [],
+    items: ["eee", "reee"],
   },
 ];
 
@@ -62,6 +65,19 @@ export const MenuItem = ({
   index: number;
   children?: React.ReactNode;
 }) => {
+  const [loginstatus, setloginstatus] = useAtom<boolean>(loginstatusAtom);
+  const router = useRouter().push;
+
+  useEffect(() => {
+    let loginS = localStorage.getItem("loginStatus");
+    if (!loginS) {
+      setloginstatus(false);
+      // router("/login");
+    } else {
+      setloginstatus(true);
+    }
+  }, []);
+
   return (
     <div
       className="relative font-medium"
@@ -70,33 +86,12 @@ export const MenuItem = ({
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        onClick={() => setActive(item)}
       >
-        <Link href={link}>{item}</Link>
+        <Link href={loginstatus && item === "LOGIN" ? "#" : link}>
+          {item === "LOGIN" ? (loginstatus ? children : item) : item}
+        </Link>
       </motion.p>
-      {active !== null && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-        >
-          {active === item && navItems[index] && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
-              <motion.div
-                transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="backdrop-blur-sm rounded-lg overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
-              >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
-                  {children}
-                </motion.div>
-              </motion.div>
-            </div>
-          )}
-        </motion.div>
-      )}
     </div>
   );
 };
@@ -109,8 +104,7 @@ export const Menu = ({
   children: React.ReactNode;
 }) => {
   return (
-    <nav
-      onMouseLeave={() => setActive(null)} // resets the state
+    <nav // resets the state
       className="hidden sm:flex min-w-[50%] relative shadow-input justify-between space-x-8"
     >
       {children}
@@ -144,6 +138,8 @@ export const ProductItem = ({
 };
 
 export const FloatingNav = ({ className }: { className?: string }) => {
+  const [loginstatus, setloginstatus] = useAtom<boolean>(loginstatusAtom);
+
   const { scrollYProgress } = useScroll();
 
   const router = useRouter();
@@ -204,6 +200,11 @@ export const FloatingNav = ({ className }: { className?: string }) => {
       </div>
     );
   }, [onLogo]);
+
+  const logout = async () => {
+    setloginstatus(false);
+    localStorage.removeItem("loginStatus");
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -289,7 +290,54 @@ export const FloatingNav = ({ className }: { className?: string }) => {
                   link={navItem.link}
                   item={navItem.name}
                   index={idx}
-                ></MenuItem>
+                >
+                  {loginstatus && navItem.name === "LOGIN"
+                    ? "My Account"
+                    : navItem.name}
+                  {active !== null && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.85, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={transition}
+                    >
+                      {active === "LOGIN" && navItems[idx] && (
+                        <div className="absolute top-[calc(100%_+_0.6rem)] left-1/2 transform -translate-x-1/2">
+                          <motion.div
+                            transition={transition}
+                            layoutId="active" // layoutId ensures smooth animation
+                            className="backdrop-blur-sm rounded-lg overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                          >
+                            <motion.div
+                              layout // layout ensures smooth animation
+                              className="w-max h-full p-4"
+                            >
+                              <div className="list-none">
+                                <div className="hover:text-[#E9B737]">
+                                  {" "}
+                                  <Link href="/account">
+                                    Account Settings
+                                  </Link>{" "}
+                                </div>
+                                <div className="hover:text-[#E9B737]">
+                                  {" "}
+                                  <Link href="/purchases">
+                                    My Purchases
+                                  </Link>{" "}
+                                </div>
+                                <div
+                                  className="hover:text-[#E9B737]"
+                                  onClick={logout}
+                                >
+                                  <Link href="/login">Logout</Link>
+                                </div>
+                              </div>
+                            </motion.div>
+                          </motion.div>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
+                </MenuItem>
               ))}
             </Menu>
             <div

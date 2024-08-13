@@ -5,10 +5,10 @@ import "./globals.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "react-toastify/dist/ReactToastify.css";
 import localFont from "@next/font/local";
+import JotaiProvider from "@/lib/providers/jotaiProvider";
 
 import ThemeProvider from "@/lib/providers/ThemeProvider";
 import { FloatingNav } from "@/lib/components/layout/FloatingHeader";
-import Footer from "@/lib/components/layout/Footer";
 
 const inter = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -39,28 +39,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans`}>
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        <FloatingNav />
-        <video
-          className="background-video show-for-xxlarge fixed top-0 z-0 w-[100vw] h-[100vh]"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/background.mp4" type="video/mp4" />
-        </video>
-        <ThemeProvider>{children}</ThemeProvider>
+        <JotaiProvider>
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          <FloatingNav />
+          <video
+            className="background-video show-for-xxlarge fixed top-0 -z-50 w-[100vw] h-[100vh]"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/background.mp4" type="video/mp4" />
+          </video>
+          <ThemeProvider>{children}</ThemeProvider>
+        </JotaiProvider>
       </body>
     </html>
   );

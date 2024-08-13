@@ -80,7 +80,7 @@ li:hover {
 
 .background-video {
   top: 0;
-  z-index: -1;
+  z-index: -20;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -286,8 +286,7 @@ li:hover {
   padding-right: 80px;
 }
 
-@media (max-width:1024px) {
-}
+
 
 @media (max-width:800px) {
   .outpadding{
@@ -355,4 +354,60 @@ li:hover {
   background-color: #15182B;
   color: white;
   transform: rotateX(180deg);
+}
+
+.course-title {
+  font-family: "NeoGramExtended";
+  color: black;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.18rem;
+}
+.course-title2 {
+  font-family: "NeoGramExtended";
+  font-weight: 700;
+  color: white;
+  font-size: 40px;
+  letter-spacing: -0.18rem;
+}
+.course-text {
+  font-family: "NeoGramCondensed";
+  color:#242424;
+  font-size : 20px;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+}
+.course-text2 {
+  font-family: "NeoGramCondensed";
+  color: white;
+  font-size : 20px;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+}
+
+@media (max-width:1024px) {
+  .course-title {
+    font-size: 30px;
+    
+  }
+  .course-text {
+    color:#242424;
+    font-size : 18px;
+  }
+}
+
+.course-div-bg {
+  background-color: #f0f4f7;
+}
+.course-btn-color {
+  background-color: black;
+}
+.course-bg {
+  background-image: url("/course-bg.webp");
+  background-size: cover;
+  height: 400px;
+}
+
+html {
+  scroll-behavior: smooth;
 }

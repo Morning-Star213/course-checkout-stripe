@@ -27,7 +27,7 @@ export default function Footer() {
   }, [onLogo]);
   return (
     <div className="bg-[#E9B737]">
-      <div className=" sm:flex sm:grid2-x sm:m-auto">
+      <div className=" sm:flex main-container sm:m-auto">
         <div className=" sm:m-auto mt-10  outpadding sm:flex sm:justify-between sm:w-[100%]">
           <div className="text-center sm:text-[20px] text-[15px] py-6 flex my-auto">
             GET THE LATEST NEWS IN BLOCKCHAIN AND CRYPTO

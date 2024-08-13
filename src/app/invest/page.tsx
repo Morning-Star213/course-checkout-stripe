@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
-import { motion, Variants } from "framer-motion";
-import { FloatingNav } from "@/lib/components/layout/FloatingHeader";
+import { motion} from "framer-motion";
 import Footer from "@/lib/components/layout/Footer";
-import ContactUs from "@/lib/components/contactus/page";
+import ContactUs from "@/lib/components/contactus/indext";
 
 const Invest = () => {
   return (
